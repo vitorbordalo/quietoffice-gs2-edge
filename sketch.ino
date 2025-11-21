@@ -3,52 +3,43 @@
 #include <Wire.h>
 #include <U8g2lib.h>
 
-// --------------------------------------------------
-// DISPLAY OLED SSD1306 (I2C)
-// Pinos no Wokwi:
-//   OLED SDA -> ESP32 GPIO21
-//   OLED SCL -> ESP32 GPIO22
-//   OLED VCC -> 3V3
-//   OLED GND -> GND
-// --------------------------------------------------
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C display(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 
-// --------------------------------------------------
 // CONFIG Wi-Fi (Wokwi)
-// --------------------------------------------------
+
 const char* WIFI_SSID     = "Wokwi-GUEST";
 const char* WIFI_PASSWORD = "";
 const uint8_t WIFI_CHANNEL = 6;
 
-// --------------------------------------------------
+
 // CONFIG FIWARE (Orion na Azure)
-// --------------------------------------------------
+
 const char* FIWARE_URL =
   "http://52.156.26.21:1026/v2/entities/WorkArea:001/attrs";
 
 const char* FIWARE_SERVICE      = "quietoffice";
 const char* FIWARE_SERVICE_PATH = "/";
 
-// --------------------------------------------------
+
 // PARÂMETROS DO MONITOR DE RUÍDO
-// --------------------------------------------------
-const float NOISE_ALERT_THRESHOLD   = 55.0;      // dB para alerta
+
+const float NOISE_ALERT_THRESHOLD   = 65.0;      // dB para alerta
 const unsigned long SEND_INTERVAL_MS = 5000;     // envio a cada 5s
 
 unsigned long lastSendTime = 0;
 
-// --------------------------------------------------
+
 // LEITURA DE RUÍDO (SIMULADA)
-// --------------------------------------------------
+
 float readNoiseLevel() {
   // Simula ruído entre 40.0 e 80.0 dB
   int raw = random(400, 800);   // 400..799
   return raw / 10.0;
 }
 
-// --------------------------------------------------
+
 // AVALIAÇÃO DO NÍVEL DE RUÍDO
-// --------------------------------------------------
+
 void evaluateNoise(float noise,
                    String& status,
                    bool& alert,
@@ -64,9 +55,8 @@ void evaluateNoise(float noise,
   }
 }
 
-// --------------------------------------------------
 // ATUALIZA O OLED SSD1306
-// --------------------------------------------------
+
 void updateDisplay(float noise,
                    float limit,
                    const String& status,
@@ -103,9 +93,8 @@ void updateDisplay(float noise,
   display.sendBuffer();
 }
 
-// --------------------------------------------------
-// ENVIO PARA O FIWARE (SEM POLUIR A SERIAL)
-// --------------------------------------------------
+// ENVIO PARA O FIWARE
+
 void sendToFiware(float noise,
                   const String& status,
                   bool alert,
@@ -165,9 +154,9 @@ void setup() {
   randomSeed(analogRead(0));
 }
 
-// --------------------------------------------------
+
 // LOOP PRINCIPAL
-// --------------------------------------------------
+
 void loop() {
   unsigned long now = millis();
 
