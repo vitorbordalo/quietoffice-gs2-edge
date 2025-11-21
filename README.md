@@ -1,6 +1,8 @@
 QuietOffice – Monitor de Ruído (ESP32 + FIWARE + OLED)
 Global Solution 2 – Futuro do Trabalho (FIAP)
+          
 Alunos: Vitor Bordalo Correa Guimaraes (RM: 561592) e Lucas Flekner Branquinho (RM: 562262)
+
 Turma: 1ESPH
 
 ⸻
