@@ -1,5 +1,7 @@
 QuietOffice – Monitor de Ruído (ESP32 + FIWARE + OLED)
-Global Solution – Futuro do Trabalho (FIAP)
+Global Solution 2 – Futuro do Trabalho (FIAP)
+Alunos: Vitor Bordalo Correa Guimaraes (RM: 561592) e Lucas Flekner Branquinho (RM: 562262)
+Turma: 1ESPH
 
 ⸻
 
@@ -58,26 +60,11 @@ ESP32 (com OLED) → HTTP NGSI v2 → Orion Context Broker → Consulta por cURL
 
 	4.	Execução no simulador (Wokwi)
 
-Passo a passo:
-	1.	Acessar o projeto no Wokwi (link na seção de Links de entrega).
-	2.	Confirmar que a placa é “ESP32 DevKit v1”.
-	3.	Verificar o circuito do display OLED SSD1306 (I2C):
-	•	VCC ligado ao 3V3 do ESP32;
-	•	GND ligado ao GND do ESP32;
-	•	SCL ligado ao GPIO 22 do ESP32;
-	•	SDA ligado ao GPIO 21 do ESP32.
-	4.	No código, já estão definidos:
-	•	rede Wi-Fi de simulação: SSID “Wokwi-GUEST”, sem senha;
-	•	limite de ruído: 55,0 dB;
-	•	intervalo de envio ao FIWARE: 5 segundos.
-	5.	Clicar em “Run” no Wokwi.
-	6.	Observar:
-	•	no Serial Monitor: ruído atual, ruído limite e mensagem de texto;
-	•	no display OLED: mesmo conteúdo, em formato resumido para o usuário final.
+Link vide no Youtube:
 
 ⸻
 
-	5.	Integração com FIWARE e evidências (prints)
+	5.	Integração com FIWARE e evidências 
 
 a) Verificação do Orion
 	•	É feita via requisição HTTP para o endpoint /version do Orion na VM.
@@ -89,22 +76,10 @@ c) Atualização de atributos
 	•	A cada ciclo, o ESP32 envia um payload JSON com o nível de ruído e o estado do ambiente para o Orion, que atualiza a entidade WorkArea:001.
 
 d) Evidências
-	•	As evidências da integração com o FIWARE serão apresentadas em prints de tela, incluindo:
-• consulta à entidade WorkArea:001 no Orion (resposta JSON atualizada);
-• terminal/console mostrando as leituras de ruído e mensagens;
-• tela do simulador Wokwi com o display OLED exibindo os dados do QuietOffice.
+	<img width="1913" height="1003" alt="image" src="https://github.com/user-attachments/assets/5b4bc4a9-2262-4a9d-ae7c-ae7eac35ffe8" />
+	<img width="1920" height="584" alt="image" src="https://github.com/user-attachments/assets/b7d80158-7b5e-403a-bd27-a2848e16fc54" />
+	<img width="1920" height="1031" alt="image" src="https://github.com/user-attachments/assets/aef16eca-423f-4fbb-a7fb-353d6011c6fd" />
 
-Esses prints comprovam que o ESP32 está enviando dados ao Orion e que os valores de noiseLevel, status, alert e alertMessage estão sendo atualizados conforme o ruído simulado.
 
-⸻
 
-	6.	Itens de entrega
 
-	•	Repositório GitHub com código-fonte (sketch do ESP32) e este README.
-	•	Link público da simulação Wokwi (ESP32 + OLED + FIWARE).
-	•	Vídeo de até 3 minutos, apresentando:
-• cenário de uso;
-• arquitetura da solução;
-• principais desafios e diferenciais;
-• demonstração do sistema em funcionamento (Wokwi, display OLED e consulta ao FIWARE).
-	•	Prints de tela comprovando a integração com o FIWARE Orion (conforme descrito na seção 5).
