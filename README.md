@@ -62,7 +62,7 @@ ESP32 (com OLED) → HTTP NGSI v2 → Orion Context Broker → Consulta por cURL
 
 	4.	Execução no simulador (Wokwi)
 
-Link vide no Youtube:
+Link vide no Youtube: https://www.youtube.com/watch?v=IAgwJmOnnz0
 
 ⸻
 
